@@ -252,6 +252,278 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/22/解决QT单独创建ui文件后报错问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Divenier">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/dear.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Divenier's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/22/解决QT单独创建ui文件后报错问题/" itemprop="url">解决QT单独创建ui文件后报错问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-22T16:09:44+08:00">
+                2019-09-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>本博客内容如题：<br>当创建c++ class文件（同时加入了.h文件）后，<img src="/images/build_class.jpg" alt></p>
+<p>再单独创建同名qt designer form(.ui)后，<img src="/images/build_ui.jpg" alt></p>
+<p>即使添加ui对应的头文件(#include “ui_test.h”)(这种情况有个特点：添加此ui文件不会有任何输入补全提示）<img src="/images/h.jpg" alt></p>
+<p>相应的.cpp文件中总会报错：<img src="/images/error.jpg" alt></p>
+<p>曾参照此篇博客<a href="https://blog.csdn.net/rjc_lihui/article/details/88397009" target="_blank" rel="noopener">https://blog.csdn.net/rjc_lihui/article/details/88397009</a><br>尝试解决，发现并没用。</p>
+<p>总之就是里外不是人，谁用谁知道。</p>
+<p><strong>解决方法</strong>：<br>同时新建.h .cpp .ui三种文件   方法：addNew时选择 Qt-&gt;<strong>Qt设计师界面类</strong></p>
+<p><img src="/images/choose.jpg" alt></p>
+<p>也就是.ui上面那个，这样就能一起添加三种文件，解决了报错问题<img src="/images/three.jpg" alt></p>
+<p>菜鸡刚开始学，不喜轻喷。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/31/Qt命令行生成-pro文件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Divenier">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/dear.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Divenier's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/31/Qt命令行生成-pro文件/" itemprop="url">Qt命令行生成.pro文件</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-31T20:46:21+08:00">
+                2019-08-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/GUI/" itemprop="url" rel="index">
+                    <span itemprop="name">GUI</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在目录下新建main.cpp文件后，需要生成.pro项目文件：<br>  启动Qt5.xxx(32bits)切换到当前项目目录下后，尝试输入”qmake - project”以及”qmake-project”无果，最终输入”qmake -project”成功生成HelloWorld.pro文件。（前面留空格，后面不留</p>
+<p>输入 “mingw32-make”来生成.o文件并链接形成.exe文件时，-make之间不要留空格。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/09/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -419,14 +691,32 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
 
             
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
             
 
           </nav>
