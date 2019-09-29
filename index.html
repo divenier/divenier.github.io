@@ -609,6 +609,176 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/22/转化带有参与约束的联系集/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Divenier">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/dear.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Divenier's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/22/转化带有参与约束的联系集/" itemprop="url">转化带有参与约束的联系集</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-22T00:00:00+08:00">
+                2019-09-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="当ER图中有一个参与约束，如何表达？（奶牛书3-5-4）"><a href="#当ER图中有一个参与约束，如何表达？（奶牛书3-5-4）" class="headerlink" title="当ER图中有一个参与约束，如何表达？（奶牛书3.5.4）"></a>当ER图中有一个参与约束，如何表达？（奶牛书3.5.4）</h1><p>如：<img src="/images/er.jpg" alt></p>
+<h2 id="1-将参与的实体和联系两者共同放入一个表中-只有同时具有码约束和参与约束时才能如此解决"><a href="#1-将参与的实体和联系两者共同放入一个表中-只有同时具有码约束和参与约束时才能如此解决" class="headerlink" title="1.将参与的实体和联系两者共同放入一个表中(只有同时具有码约束和参与约束时才能如此解决)"></a>1.将参与的实体和联系两者共同放入一个表中(只有同时具有码约束和参与约束时才能如此解决)</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Dep_Mgr ( did <span class="built_in">INTEGER</span>,</span><br><span class="line">    dname <span class="built_in">CHAR</span>(<span class="number">20</span>) ,</span><br><span class="line">    budget <span class="built_in">REAL</span>,</span><br><span class="line">    ssn <span class="built_in">CHAR</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    since <span class="built_in">DATE</span>,</span><br><span class="line">    PRIMARY <span class="keyword">KEY</span> (did),</span><br><span class="line">    <span class="keyword">FOREIGN</span> <span class="keyword">KEY</span> (ssn) <span class="keyword">REFERENCES</span> Employees</span><br><span class="line"><span class="keyword">ON</span> <span class="keyword">DELETE</span> <span class="keyword">NO</span> <span class="keyword">ACTION</span>)</span><br></pre></td></tr></table></figure>
+
+<p>原书：</p>
+<blockquote>
+<p>上面的SQL语句不允许属性ssn的值为null，这样，Dept_Mgr的每条记录也就都能确定Employees中的一条记录（经理），可以满足每个部门都有经理的参与约束。语句中的NOACTION确保被Dept_Mgr引用了的Employees记录不会被删除，而且这也是默认的操作，可以不用明确给出。如果我们希望删除这条Employees记录，那么需要在删除前修改相应的Dept_Mgr记录，使一个新的雇员成为经理</p>
+</blockquote>
+<p>疑问：为什么不能使用直接创建Manages表，简单的在did、SSN后加上NOT NULL呢？（如下语句）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> manages(</span><br><span class="line">    SSN <span class="built_in">CHAR</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    did INTERGER <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    since <span class="built_in">DATE</span>,</span><br><span class="line">    PRIMARY <span class="keyword">KEY</span>(did)，//不存在did相同ssn不同的情况</span><br><span class="line">    FREIGN <span class="keyword">KEY</span> (SSN) <span class="keyword">REFERENCE</span> (employee),</span><br><span class="line">    FREIGN <span class="keyword">KEY</span> (did) <span class="keyword">REFERENCE</span> (Department))</span><br></pre></td></tr></table></figure>
+
+<p>因为：单独创建Manages表无法表达参与约束，<strong>Manages表确实表示了“SSN不能为空”即——必须有经理——这件事，但是Manages是个关系，而并不是所有Departments都确定有这个关系</strong> </p>
+<p>原书中是这样解释的：</p>
+<blockquote>
+<p>对于每个部门都必须有经理的约束，无法使用3.5.3节讨论的第一种方法来转换（对于前面定义的Manages，如果对字段ssn和did添加NOTNULL约束，将产生什么样的效果呢？提示：该约束将防止解雇一个经理，但是不能确保开始时每个部门都有经理）。<br>因此，我们只能使用第二种方法来转换一对多的联系集，如Manages，尤其是具有码约束同时又具有全参与约束的实体集。</p>
+</blockquote>
+<p><em>文中提到的“第二种方法”即，把Departments和Manages关系放到一起创建表的方法</em></p>
+<p>书中对此方法这样评价：</p>
+<blockquote>
+<p>事实上，对于前面有关Manages联系集的示例，可以看成<strong>用码和外码约束来表达参与约束</strong>的一个范例。Manages是一个二元联系集，其中一个实体集（Departments）具有码约束，并且该实体集还需要满足完全参与约束。</p>
+</blockquote>
+<p>Q：为什么只有同时具有码约束时才能如此解决？</p>
+<p>我们的方法是，将实体Department和manage关系结合了，因此，一个Department实体自然只能有一个manager，此处，manage的关系对于Department就像拥有的一个属性一样，当然只能有一个，也就是必须满足码约束。</p>
+<h2 id="2-在使用SQL时定义断言-完全参与"><a href="#2-在使用SQL时定义断言-完全参与" class="headerlink" title="2.在使用SQL时定义断言(完全参与)"></a>2.在使用SQL时定义断言(完全参与)</h2><p>ER图同上，原文：</p>
+<blockquote>
+<p>为保证Works_In中的Departments的完全参与，在使用SQL时我们需要定义一个断言，要求Departments中的每个did值都出现在Works_ln的某个记录；并且对于Works_In中指向其他实体集的外码字段（如在本例中的字段ssn），其值不允许为null。<br>通过强制要求Works_In的ssn字段值不能为null，可以确保约束的第二部分得到满足（即确保Employees在Works_In中的参与是对称的）。</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">assertion</span> must_dep</span><br><span class="line"><span class="keyword">check</span>((<span class="keyword">select</span> <span class="keyword">count</span>(*)</span><br><span class="line">    <span class="keyword">from</span> tb_dep_mgr d</span><br><span class="line">    <span class="keyword">where</span> d.did <span class="keyword">not</span> <span class="keyword">in</span>(<span class="keyword">select</span> w.did</span><br><span class="line">                <span class="keyword">from</span> tb_works_in w) =<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<p>笔者在oracle 11g中尝试运行该语句，随后就发现oracle并不支持断言的声明……因此上段代码的正确性无法保证，做个参考吧。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/31/Qt命令行生成-pro文件/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -919,7 +1089,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -930,7 +1100,7 @@
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">categories</span>
                 
               </div>
@@ -941,7 +1111,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
