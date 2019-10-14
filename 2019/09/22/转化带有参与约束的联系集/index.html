@@ -88,7 +88,7 @@
 <meta property="og:description" content="当ER图中有一个参与约束，如何表达？（奶牛书3.5.4）如： 1.将参与的实体和联系两者共同放入一个表中(只有同时具有码约束和参与约束时才能如此解决)12345678CREATE TABLE Dep_Mgr ( did INTEGER,    dname CHAR(20) ,    budget REAL,    ssn CHAR(11) NOT NULL,    since DATE,    P">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/er.jpg">
-<meta property="og:updated_time" content="2019-09-29T09:13:47.919Z">
+<meta property="og:updated_time" content="2019-10-14T10:45:48.672Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="转化带有参与约束的联系集">
 <meta name="twitter:description" content="当ER图中有一个参与约束，如何表达？（奶牛书3.5.4）如： 1.将参与的实体和联系两者共同放入一个表中(只有同时具有码约束和参与约束时才能如此解决)12345678CREATE TABLE Dep_Mgr ( did INTEGER,    dname CHAR(20) ,    budget REAL,    ssn CHAR(11) NOT NULL,    since DATE,    P">
@@ -346,6 +346,8 @@
       
         <h1 id="当ER图中有一个参与约束，如何表达？（奶牛书3-5-4）"><a href="#当ER图中有一个参与约束，如何表达？（奶牛书3-5-4）" class="headerlink" title="当ER图中有一个参与约束，如何表达？（奶牛书3.5.4）"></a>当ER图中有一个参与约束，如何表达？（奶牛书3.5.4）</h1><p>如：<img src="/images/er.jpg" alt></p>
 <h2 id="1-将参与的实体和联系两者共同放入一个表中-只有同时具有码约束和参与约束时才能如此解决"><a href="#1-将参与的实体和联系两者共同放入一个表中-只有同时具有码约束和参与约束时才能如此解决" class="headerlink" title="1.将参与的实体和联系两者共同放入一个表中(只有同时具有码约束和参与约束时才能如此解决)"></a>1.将参与的实体和联系两者共同放入一个表中(只有同时具有码约束和参与约束时才能如此解决)</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Dep_Mgr ( did <span class="built_in">INTEGER</span>,</span><br><span class="line">    dname <span class="built_in">CHAR</span>(<span class="number">20</span>) ,</span><br><span class="line">    budget <span class="built_in">REAL</span>,</span><br><span class="line">    ssn <span class="built_in">CHAR</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    since <span class="built_in">DATE</span>,</span><br><span class="line">    PRIMARY <span class="keyword">KEY</span> (did),</span><br><span class="line">    <span class="keyword">FOREIGN</span> <span class="keyword">KEY</span> (ssn) <span class="keyword">REFERENCES</span> Employees</span><br><span class="line"><span class="keyword">ON</span> <span class="keyword">DELETE</span> <span class="keyword">NO</span> <span class="keyword">ACTION</span>)</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
 
 <p>原书：</p>
 <blockquote>

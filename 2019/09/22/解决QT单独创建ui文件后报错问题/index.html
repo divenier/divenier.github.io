@@ -93,7 +93,7 @@
 <meta property="og:image" content="http://yoursite.com/images/error.jpg">
 <meta property="og:image" content="http://yoursite.com/images/choose.jpg">
 <meta property="og:image" content="http://yoursite.com/images/three.jpg">
-<meta property="og:updated_time" content="2019-09-22T08:22:20.529Z">
+<meta property="og:updated_time" content="2019-10-14T10:44:48.919Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="解决QT单独创建ui文件后报错问题">
 <meta name="twitter:description" content="本博客内容如题：当创建c++ class文件（同时加入了.h文件）后， 再单独创建同名qt designer form(.ui)后， 即使添加ui对应的头文件(#include “ui_test.h”)(这种情况有个特点：添加此ui文件不会有任何输入补全提示） 相应的.cpp文件中总会报错： 曾参照此篇博客https://blog.csdn.net/rjc_lihui/article/detail">
@@ -333,6 +333,8 @@
 <p>相应的.cpp文件中总会报错：<img src="/images/error.jpg" alt></p>
 <p>曾参照此篇博客<a href="https://blog.csdn.net/rjc_lihui/article/details/88397009" target="_blank" rel="noopener">https://blog.csdn.net/rjc_lihui/article/details/88397009</a><br>尝试解决，发现并没用。</p>
 <p>总之就是里外不是人，谁用谁知道。</p>
+<a id="more"></a>
+
 <p><strong>解决方法</strong>：<br>同时新建.h .cpp .ui三种文件   方法：addNew时选择 Qt-&gt;<strong>Qt设计师界面类</strong></p>
 <p><img src="/images/choose.jpg" alt></p>
 <p>也就是.ui上面那个，这样就能一起添加三种文件，解决了报错问题<img src="/images/three.jpg" alt></p>
